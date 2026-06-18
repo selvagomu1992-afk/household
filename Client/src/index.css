@@ -1065,6 +1065,10 @@ body {
 }
 
 @media (max-width: 600px) {
+  body, input, button, select, textarea {
+    font-size: 16px;
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
@@ -1104,5 +1108,33 @@ body {
     align-items: flex-start;
     gap: 8px;
     padding-right: 50px;
+  }
+
+  .hh-summary-value {
+    font-size: 20px;
+  }
+
+  .heading-item-label {
+    font-size: 13px;
+  }
+
+  .detail-row-note {
+    font-size: 14px;
+  }
+
+  .detail-row-amt {
+    font-size: 15px;
+  }
+
+  .sidebar-title {
+    font-size: 15px;
+  }
+
+  .sidebar-heading {
+    font-size: 14px;
+  }
+
+  .sidebar-item {
+    font-size: 13px;
   }
 }
