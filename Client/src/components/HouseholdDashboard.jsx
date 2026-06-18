@@ -204,6 +204,7 @@ function HouseholdDashboard({
           {selected && (
             <div className="detail-view">
               <div className="detail-header">
+                <button className="detail-back" onClick={() => { setSelectedKey(null); resetForm(); }}>← Back</button>
                 <span className="detail-icon">{selected.icon}</span>
                 <div>
                   <div className="detail-title">{selected.label}</div>
