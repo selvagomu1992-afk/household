@@ -3,9 +3,9 @@ import LoginPage from './components/LoginPage';
 import HouseholdDashboard from './components/HouseholdDashboard';
 import { INCOME_CATEGORIES } from './data/categories';
 
-const API = 'http://localhost:5000/api/expenses';
-const INCOME_API = 'http://localhost:5000/api/incomes';
-const CAT_API = 'http://localhost:5000/api/categories';
+const API = 'https://household-i39j.onrender.com/api/expenses';
+const INCOME_API = 'https://household-i39j.onrender.com/api/incomes';
+const CAT_API = 'https://household-i39j.onrender.com/api/categories';
 
 function App() {
   const [user, setUser] = useState(() => {

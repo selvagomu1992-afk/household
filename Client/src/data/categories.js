@@ -1,4 +1,4 @@
-const CAT_API = 'http://localhost:5000/api/categories';
+const CAT_API = 'https://household-i39j.onrender.com/api/categories';
 
 export function getToken(user) {
   return user?.token || '';

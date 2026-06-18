@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const AUTH_API = 'http://localhost:5000/api/auth';
+const AUTH_API = 'https://household-i39j.onrender.com/api/auth';
 
 function LoginPage({ onLogin }) {
   const [isRegister, setIsRegister] = useState(false);
