@@ -551,6 +551,23 @@ body {
   padding: 18px 20px;
 }
 
+.topbar-back {
+  border: none;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.topbar-back:hover {
+  background: var(--border);
+}
+
 .detail-back {
   border: none;
   background: var(--bg);

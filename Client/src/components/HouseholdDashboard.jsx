@@ -135,6 +135,9 @@ function HouseholdDashboard({
       <div className="main-area">
         <header className="topbar">
           <div className="topbar-left">
+            {selected ? (
+              <button className="topbar-back" onClick={() => { setSelectedKey(null); resetForm(); }}>← Back</button>
+            ) : null}
             <span className="topbar-greeting">
               {selected ? `${selected.icon} ${selected.label}` : '📊 All Categories'}
             </span>
@@ -204,7 +207,6 @@ function HouseholdDashboard({
           {selected && (
             <div className="detail-view">
               <div className="detail-header">
-                <button className="detail-back" onClick={() => { setSelectedKey(null); resetForm(); }}>← Back</button>
                 <span className="detail-icon">{selected.icon}</span>
                 <div>
                   <div className="detail-title">{selected.label}</div>
