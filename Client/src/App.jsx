@@ -18,7 +18,7 @@ function App() {
 
   const token = user?.token;
 
-  useEffect(() => {
+  function fetchAll() {
     if (!token) return;
     const h = { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` };
     Promise.all([
@@ -30,7 +30,9 @@ function App() {
       setExpenses(exps);
       setIncomes(incs);
     }).catch(() => {});
-  }, [token]);
+  }
+
+  useEffect(() => { fetchAll(); }, [token]);
 
   function handleLogin(userData) {
     localStorage.setItem('expense_user', JSON.stringify(userData));
@@ -149,6 +151,7 @@ function App() {
       onAddItem={addItem}
       onDeleteHeading={deleteHeading}
       onDeleteItem={deleteItem}
+      onRefresh={fetchAll}
       user={user}
       onLogout={handleLogout}
     />

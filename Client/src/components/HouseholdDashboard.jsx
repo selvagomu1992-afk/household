@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getItemByKey } from '../data/categories';
 import Sidebar from './Sidebar';
 import CategoryManager from './CategoryManager';
+import ExportModal from './ExportModal';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -16,7 +17,7 @@ function HouseholdDashboard({
   expenses, incomes, headings, incomeCategories,
   onAddExpense, onUpdateExpense, onDeleteExpense,
   onAddIncome, onUpdateIncome, onDeleteIncome,
-  user, onLogout, onAddHeading, onAddItem, onDeleteHeading, onDeleteItem,
+  user, onLogout, onRefresh, onAddHeading, onAddItem, onDeleteHeading, onDeleteItem,
 }) {
   const [selectedKey, setSelectedKey] = useState(null);
   const [amount, setAmount] = useState('');
@@ -24,6 +25,7 @@ function HouseholdDashboard({
   const [dateTime, setDateTime] = useState(nowISO());
   const [editingId, setEditingId] = useState(null);
   const [showManager, setShowManager] = useState(false);
+  const [showExport, setShowExport] = useState(false);
 
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
@@ -147,6 +149,8 @@ function HouseholdDashboard({
           </div>
           <div className="topbar-right">
             <span className="hh-user">{user?.name || user?.phone}</span>
+            <button className="refresh-btn" onClick={onRefresh} title="Refresh">🔄</button>
+            <button className="download-btn" onClick={() => setShowExport(true)}>⬇ Export</button>
             <button className="logout-btn" onClick={onLogout}>Sign Out</button>
           </div>
         </header>
@@ -360,6 +364,14 @@ function HouseholdDashboard({
           onDeleteHeading={onDeleteHeading}
           onDeleteItem={onDeleteItem}
           onClose={() => setShowManager(false)}
+        />
+      )}
+
+      {showExport && (
+        <ExportModal
+          expenses={expenses}
+          incomes={incomes}
+          onClose={() => setShowExport(false)}
         />
       )}
     </div>

@@ -551,6 +551,38 @@ body {
   padding: 18px 20px;
 }
 
+.refresh-btn {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.refresh-btn:hover {
+  background: var(--bg);
+}
+
+.download-btn {
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.download-btn:hover {
+  background: var(--bg);
+}
+
 .topbar-back {
   border: none;
   background: var(--bg);
@@ -1046,6 +1078,55 @@ body {
   font-size: 12px !important;
   white-space: nowrap;
   flex: none;
+}
+
+/* ========================================
+   EXPORT MODAL
+   ======================================== */
+
+.export-modal {
+  max-width: 480px;
+}
+
+.export-section {
+  margin-bottom: 16px;
+}
+
+.export-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.export-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.export-row .form-input {
+  flex: 1;
+}
+
+.export-summary {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.export-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.export-actions .btn {
+  flex: 1;
 }
 
 /* ========================================
