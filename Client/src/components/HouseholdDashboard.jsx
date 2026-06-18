@@ -124,6 +124,19 @@ function HouseholdDashboard({
       .reduce((sum, e) => sum + e.amount, 0);
   });
 
+  function quickCSV() {
+    const rows = [
+      ['Type', 'Category', 'Label', 'Amount', 'Date', 'Note'],
+      ...expenses.map((e) => ['Expense', e.subCategory, e.label, e.amount.toFixed(2), new Date(e.date).toISOString().slice(0, 10), e.note || '']),
+      ...incomes.map((i) => ['Income', i.category, i.label, i.amount.toFixed(2), new Date(i.date).toISOString().slice(0, 10), i.note || '']),
+    ];
+    const csv = rows.map((r) => r.map((c) => `"${c}"`).join(',')).join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+    a.download = `all_data_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+  }
+
   return (
     <div className="app-layout">
       <Sidebar
@@ -150,6 +163,7 @@ function HouseholdDashboard({
           <div className="topbar-right">
             <span className="hh-user">{user?.name || user?.phone}</span>
             <button className="refresh-btn" onClick={onRefresh} title="Refresh">🔄</button>
+            <button className="download-btn" onClick={quickCSV}>⬇ CSV</button>
             <button className="download-btn" onClick={() => setShowExport(true)}>⬇ Export</button>
             <button className="logout-btn" onClick={onLogout}>Sign Out</button>
           </div>
