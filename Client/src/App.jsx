@@ -19,8 +19,10 @@ function App() {
   const token = user?.token;
 
   function fetchAll() {
-    if (!token) return;
-    const h = { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` };
+    const saved = localStorage.getItem('expense_user');
+    const tok = saved ? JSON.parse(saved).token : null;
+    if (!tok) return;
+    const h = { 'Content-Type': 'application/json', Authorization: `Bearer ${tok}` };
     Promise.all([
       fetch(CAT_API, { headers: h }).then((r) => r.ok ? r.json() : []),
       fetch(API, { headers: h }).then((r) => r.ok ? r.json() : []),
@@ -32,7 +34,7 @@ function App() {
     }).catch(() => {});
   }
 
-  useEffect(() => { fetchAll(); }, [token]);
+  useEffect(() => { fetchAll(); }, []);
 
   function handleLogin(userData) {
     localStorage.setItem('expense_user', JSON.stringify(userData));

@@ -377,7 +377,12 @@ body {
 
 .hh-user {
   font-size: 13px;
-  color: var(--text-secondary);
+  font-weight: 600;
+  color: var(--text);
+  padding: 4px 12px;
+  background: var(--bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
 }
 
 .logout-btn {
