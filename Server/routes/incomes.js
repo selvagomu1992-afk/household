@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    const incomes = await Income.find().sort({ date: -1 });
+    const incomes = await Income.find({ user: req.user.id }).sort({ date: -1 });
     res.json(incomes);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const income = await Income.create(req.body);
+    const income = await Income.create({ ...req.body, user: req.user.id });
     res.status(201).json(income);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -23,7 +23,11 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const income = await Income.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const income = await Income.findOneAndUpdate(
+      { _id: req.params.id, user: req.user.id },
+      req.body,
+      { new: true },
+    );
     if (!income) return res.status(404).json({ error: 'Not found' });
     res.json(income);
   } catch (err) {
@@ -33,7 +37,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-    const income = await Income.findByIdAndDelete(req.params.id);
+    const income = await Income.findOneAndDelete({ _id: req.params.id, user: req.user.id });
     if (!income) return res.status(404).json({ error: 'Not found' });
     res.json({ message: 'Deleted' });
   } catch (err) {
