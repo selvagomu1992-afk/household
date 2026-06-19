@@ -34,7 +34,7 @@ function App() {
     }).catch(() => {});
   }
 
-  useEffect(() => { fetchAll(); }, []);
+  useEffect(() => { if (token) fetchAll(); }, [token]);
 
   function handleLogin(userData) {
     localStorage.setItem('expense_user', JSON.stringify(userData));
