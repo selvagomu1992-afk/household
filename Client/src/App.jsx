@@ -34,7 +34,7 @@ function App() {
       setHeadings(cats);
       setExpenses(exps);
       setIncomes(incs);
-    }).catch(() => {});
+    }).catch((err) => console.error('Refresh failed:', err));
   }
 
   useEffect(() => { if (token) fetchAll(); }, [token]);
