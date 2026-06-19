@@ -19,6 +19,9 @@ function App() {
   const token = user?.token;
 
   function fetchAll() {
+    setExpenses([]);
+    setIncomes([]);
+    setHeadings([]);
     const saved = localStorage.getItem('expense_user');
     const tok = saved ? JSON.parse(saved).token : null;
     if (!tok) return;
