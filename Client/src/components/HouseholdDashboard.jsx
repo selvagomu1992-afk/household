@@ -162,7 +162,7 @@ function HouseholdDashboard({
           </div>
           <div className="topbar-right">
             <span className="hh-user">{user?.name || user?.phone}</span>
-            <button className="refresh-btn" onClick={() => { resetForm(); onRefresh(); }} title="Refresh">🔄</button>
+            <button className="refresh-btn" onClick={() => { setSelectedKey(null); resetForm(); onRefresh(); }} title="Refresh">🔄</button>
             <button className="download-btn" onClick={quickCSV}>⬇ CSV</button>
             <button className="download-btn" onClick={() => setShowExport(true)}>⬇ Export</button>
             <button className="logout-btn" onClick={onLogout}>Sign Out</button>
